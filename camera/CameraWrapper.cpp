@@ -21,7 +21,7 @@
 *
 */
 
-// #define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_PARAMETERS
 
 #define LOG_TAG "CameraWrapper"
@@ -111,8 +111,9 @@ static char * camera_fixup_getparams(int id, const char * settings)
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
-
-
+    ALOGE("getparams: video-hfr-values\n");
+    /* Camera doesn't expose that hfr can be off in the values */
+    params.set("video-hfr-values", "60,120,off");
 
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
@@ -135,6 +136,10 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     } else {
 	params.set(android::CameraParameters::KEY_ZSL, "on");
     }
+
+    ALOGE("setparams: video-hfr-values\n");
+    /* Camera doesn't expose that hfr can be off in the values */
+    params.set("video-hfr-values", "60,120,off");
 
     android::String8 strParams = params.flatten();
 

@@ -118,7 +118,7 @@ cameradata/datapattern_420sp.yuv
 cameradata/datapattern_front_420sp.yuv
 etc/imx134_module_info.xml
 etc/imx135_module_info.xml
-lib/hw/camera.msm8974.so
+lib/hw/camera.msm8974.so:lib/hw/camera.vendor.msm8974.so
 lib/libTsAe.so
 lib/libTsAf.so
 lib/libTs_J_Accm.so
