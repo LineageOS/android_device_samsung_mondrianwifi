@@ -280,4 +280,7 @@
       The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>
 
+    <!-- We dont have different firmware for wifi modes, prevent reloading it -->
+    <bool name="config_wifiApFirmwareReload">false</bool>
+
 </resources>
