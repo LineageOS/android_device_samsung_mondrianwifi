@@ -83,6 +83,12 @@ on early-boot
     chown system system /sys/class/graphics/fb1/format_3d
     ## [END] system_sw.sa
 
+    # Download the wlan firmware and start it up
+    setprop wlan.driver.config /data/misc/wifi/WCNSS_qcom_cfg.ini
+    write /dev/wcnss_wlan 1
+    write /sys/devices/fb000000.qcom,wcnss-wlan/serial_number ${ro.serialno}
+    start wcnss-service
+
 on boot
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
@@ -453,6 +459,13 @@ service amp_load /system/bin/amploader -l 7000
 service amp_unload /system/bin/amploader -u
     class late_start
     user root
+    disabled
+    oneshot
+
+service wcnss-service /system/bin/wcnss_service
+    class late_start
+    user system
+    group system wifi
     disabled
     oneshot
 
