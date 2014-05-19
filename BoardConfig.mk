@@ -20,14 +20,13 @@
 # definition file).
 #
 
-# inherit from common msm8960
--include device/samsung/msm8960-common/BoardConfigCommon.mk
+TARGET_MSM8974_COMMON_WLAN_VARIANT := prima
+
+-include device/samsung/msm8974-common/BoardConfigCommon.mk
 
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/mondrianwifi/include
 
 # overrides  msm8960
-TARGET_BOARD_PLATFORM := msm8974
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 
 # Kernel Configs
@@ -65,21 +64,11 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2569011200
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12661537792
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mondrianwifi/bluetooth
-BOARD_HAVE_BLUETOOTH_QCOM := true
-BOARD_HAVE_BLUETOOTH_BCM :=
+# WLAN: Use qmi-client interface to load the correct MAC address
+TARGET_USES_QCOM_WCNSS_QMI := true
 
 # Samsung's nonstandard csd-client
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
-
-# QCOM support
-BOARD_USES_QCOM_HARDWARE := true
-BOARD_USES_LEGACY_ALSA_AUDIO := 
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_DISPLAY_VARIANT := caf-new
-TARGET_QCOM_MEDIA_VARIANT := caf-new
-TARGET_USES_QCOM_BSP := true
 
 # Audio settings
 BOARD_USES_CUSTOM_AUDIO_PLATFORM_PATH := device/samsung/mondrianwifi/audio/platform
@@ -91,26 +80,11 @@ AUDIO_FEATURE_DISABLED_ANC_HEADSET := true
 #AUDIO_FEATURE_DISABLED_SPKR_PROTECTION := true
 #AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
 
-# WiFi
-BOARD_HAS_QCOM_WLAN := true
-BOARD_WLAN_DEVICE := qcwcn
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-TARGET_USES_WCNSS_CTRL := true
-TARGET_USES_QCOM_WCNSS_QMI := true
-WIFI_DRIVER_FW_PATH_PARAM :=
-WIFI_DRIVER_FW_PATH_STA   := "sta"
-WIFI_DRIVER_FW_PATH_AP    := "ap"
-WIFI_DRIVER_FW_PATH_P2P   :=
-WIFI_DRIVER_MODULE_ARG    :=
-WIFI_DRIVER_MODULE_AP_ARG :=
-
-# Camera
-TARGET_PROVIDES_CAMERA_HAL :=
-TARGET_PROVIDES_CAMERA_HAL_MSM8974 := true
-
 # Build lights
 TARGET_PROVIDES_LIBLIGHT := true
+
+# IR
+TARGET_PROVIDES_CONSUMERIR_HAL := true
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true

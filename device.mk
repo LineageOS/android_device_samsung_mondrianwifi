@@ -209,8 +209,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     keystore.msm8974
 
-# call common msm8960
-$(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
+# call common msm8974
+$(call inherit-product, device/samsung/msm8974-common/msm8974.mk)
 
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
