@@ -385,10 +385,6 @@
 		<ctl name="COMP2 Switch" value="1" />
 	</path>
 
-	<path name="headphones">
-		<path name="headset" />
-	</path>
-
 	<path name="speaker-and-headphones">
 		<path name="spk" />
 		<path name="ear" />
@@ -471,12 +467,6 @@
 		<ctl name="DEC5 Volume" value="84" />
 	</path>
 
-	<path name="camcorder-mic">
-		<path name="main-mic" />
-		<ctl name="ADC1 Volume" value="17" />
-		<ctl name="DEC6 Volume" value="84" />
-	</path>
-
 	<!-- end of Recording Scenario -->
 
 	<!-- ================================================================ -->
@@ -527,10 +517,6 @@
 		<path name="ear-mic" />
 		<ctl name="ADC2 Volume" value="12" />
 		<ctl name="DEC5 Volume" value="84" />
-	</path>
-
-	<path name="voice-rec-mic">
-		<path name="vr-main-mic" />
 	</path>
 
 	<!-- end of recognition Scenario -->
@@ -589,14 +575,6 @@
 	</path>
 
 	<!-- end of Voice call Scenario  -->
-
-	<path name="handset">
-		<path name="voice-call-speaker" />
-	</path>
-
-	<path name="handset-mic">
-		<path name="voice-call-main-mic" />
-	</path>
 
 	<!-- ================================================================ -->
 	<!-- Video call Scenario -->
