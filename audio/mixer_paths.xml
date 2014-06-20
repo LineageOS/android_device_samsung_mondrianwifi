@@ -1059,4 +1059,10 @@
         <path name="speaker-and-headphones" />
     </path>
 
+        <path name="camcorder-mic">
+                <path name="main-mic" />
+                <ctl name="ADC1 Volume" value="17" />
+                <ctl name="DEC6 Volume" value="84" />
+        </path>
+
 </mixer>

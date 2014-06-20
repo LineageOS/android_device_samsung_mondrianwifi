@@ -101,7 +101,7 @@ void custom_init_data(){
     change_table_data(SND_DEVICE_IN_HEADSET_MIC, "rec-headset-mic");
     change_table_data(SND_DEVICE_IN_VOICE_SPEAKER_MIC, "voice-call-sub-mic");
     change_table_data(SND_DEVICE_IN_VOICE_HEADSET_MIC, "voice-call-headset-mic");
-    change_table_data(SND_DEVICE_IN_CAMCORDER_MIC, "rec-main-mic");
+    change_table_data(SND_DEVICE_IN_CAMCORDER_MIC, "camcorder-mic");
     change_table_data(SND_DEVICE_IN_VOICE_DMIC, "voice-call-main-mic");
     change_table_data(SND_DEVICE_IN_VOICE_SPEAKER_DMIC, "voice-call-sub-mic");
     change_table_data(SND_DEVICE_IN_VOICE_TTY_FULL_HEADSET_MIC, "TTY-full-mic");
