@@ -48,7 +48,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Thermal config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
+    $(LOCAL_PATH)/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf \
+    $(LOCAL_PATH)/thermald-8974.conf:system/etc/thermald-8974.conf
 
 # Media Profile
 PRODUCT_COPY_FILES += \
