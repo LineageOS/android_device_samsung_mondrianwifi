@@ -304,29 +304,9 @@ on property:init.svc.wpa_supplicant=stopped
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
-service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
-    class core
-    user root
-    oneshot
-
-service qcom-c_main-sh /system/bin/sh /init.qcom.class_main.sh
-    class main
-    user root
-    oneshot
-
-service ril-qmi /system/bin/sh /init.qcom.ril.sh
-    class main
-    user root
-    oneshot
-
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-    start qcom-c_main-sh
     start config_bluetooth
-
-#ALRAN : Run qmuxd, qmiproxy .. "disabled" type main service while encryption stage
-on property:vold.decrypt=trigger_restart_min_framework
-    start qcom-c_main-sh
 
 service cnd /system/bin/cnd
     class late_start
@@ -395,18 +375,11 @@ on property:bluetooth.hciattach=false
 #    group system inet
 #    disabled
 
-service qmiproxy /system/bin/qmiproxy
-    class main
-    user radio
-    group radio qcom_diag
-    disabled
-
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps qcom_diag
-    disabled
 
 service sensors /system/bin/sensors.qcom
     class late_start
@@ -617,11 +590,6 @@ on property:drmdiag.load=1
 
 on property:drmdiag.load=0
     stop drmdiag
-
-service qcom-sh /system/bin/sh /init.qcom.sh
-    class late_start
-    user root
-    oneshot
 
 service wifi-sdio-on /system/bin/sh /system/etc/init.qcom.sdio.sh
     class late_start
