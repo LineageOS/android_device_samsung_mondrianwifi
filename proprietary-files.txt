@@ -85,7 +85,6 @@ bin/efsks
 bin/ks
 #vendor/bin/sec-ril
 bin/qcks
-bin/qmiproxy
 bin/qmuxd
 bin/rild
 bin/rmt_storage
