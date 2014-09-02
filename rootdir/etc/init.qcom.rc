@@ -276,6 +276,10 @@ on post-fs-data
     mkdir /data/data/media 0770 media media
     restorecon_recursive /data/media
 
+    # Communicate with mpdecision and thermald
+    mkdir /dev/socket/mpdecision 0770 system system
+    chmod 2770 /dev/socket/mpdecision
+
 # GPIO DVS
     chown radio system /sys/class/secgpio_check/secgpio_check_all/secgpio_ctrl
 
@@ -805,6 +809,11 @@ on nonencrypted
 
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
+
+service mpdecision /system/bin/mpdecision --avg_comp
+    class main
+    user root
+    disabled
 
 service hcidump /system/bin/sh /system/etc/hcidump.sh
     user bluetooth
