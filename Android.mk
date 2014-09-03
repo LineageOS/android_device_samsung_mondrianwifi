@@ -22,10 +22,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(BOARD_VENDOR),samsung)
-ifeq ($(TARGET_BOARD_PLATFORM),msm8974)
-
-ifneq ($(filter mondrianwifi,$(TARGET_DEVICE)),)
+ifeq ($(TARGET_DEVICE),mondrianwifi)
 
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
 
@@ -35,6 +32,8 @@ $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
     ln -sf /data/misc/wifi/WCNSS_qcom_cfg.ini \
         $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini)
 
-endif
-endif
+# Create a link to equate /vendor/firmware and /system/etc/firmware
+$(shell mkdir -p $(TARGET_OUT)/vendor; \
+    ln -sf /system/etc/firmware $(TARGET_OUT)/vendor/firmware)
+
 endif

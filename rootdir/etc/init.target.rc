@@ -43,8 +43,6 @@ on fs
     restorecon_recursive /persist
     setprop ro.crypto.fuse_sdcard true
 
-    exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
-
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
@@ -523,11 +521,6 @@ service qseecomd /system/bin/qseecomd
    class late_start
    user root
    group system
-
-service mpdecision /system/bin/mpdecision --avg_comp
-   user root
-   group system
-   disabled
 
 service thermal-engine /system/bin/thermal-engine
    class core

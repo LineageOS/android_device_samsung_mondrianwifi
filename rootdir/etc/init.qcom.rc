@@ -304,29 +304,9 @@ on property:init.svc.wpa_supplicant=stopped
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
-service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
-    class core
-    user root
-    oneshot
-
-service qcom-c_main-sh /system/bin/sh /init.qcom.class_main.sh
-    class main
-    user root
-    oneshot
-
-service ril-qmi /system/bin/sh /init.qcom.ril.sh
-    class main
-    user root
-    oneshot
-
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-    start qcom-c_main-sh
     start config_bluetooth
-
-#ALRAN : Run qmuxd, qmiproxy .. "disabled" type main service while encryption stage
-on property:vold.decrypt=trigger_restart_min_framework
-    start qcom-c_main-sh
 
 service cnd /system/bin/cnd
     class late_start
@@ -394,12 +374,6 @@ on property:bluetooth.hciattach=false
 #    user system
 #    group system inet
 #    disabled
-
-service qmiproxy /system/bin/qmiproxy
-    class main
-    user radio
-    group radio qcom_diag
-    disabled
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
@@ -618,11 +592,6 @@ on property:drmdiag.load=1
 on property:drmdiag.load=0
     stop drmdiag
 
-service qcom-sh /system/bin/sh /init.qcom.sh
-    class late_start
-    user root
-    oneshot
-
 service wifi-sdio-on /system/bin/sh /system/etc/init.qcom.sdio.sh
     class late_start
     group wifi inet
@@ -669,29 +638,56 @@ on property:sys.boot_completed=1
     write /sys/module/msm_pm/modes/cpu3/retention/suspend_enabled 1
     write /sys/module/msm_thermal/core_control/enabled 1
 
-    # Configure the CPU governor
+    # Start to configure the CPU governors
+    write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
+
+    # Conservative
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpufreq/conservative/down_threshold 65
+    write /sys/devices/system/cpu/cpufreq/conservative/freq_step 5
+    write /sys/devices/system/cpu/cpufreq/conservative/ignore_nice_load 1
+    write /sys/devices/system/cpu/cpufreq/conservative/sampling_down_factor 1
+    write /sys/devices/system/cpu/cpufreq/conservative/sampling_rate 180000
+    write /sys/devices/system/cpu/cpufreq/conservative/sampling_rate_min 180000
+    write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 90
+
+    # Interactive
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
-    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1497600
-    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
+    write /sys/devices/system/cpu/cpufreq/interactive/check_fast_target_loads "50 1000000:66"
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 0
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
+    write /sys/devices/system/cpu/cpufreq/interactive/sync_freq 1036800
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack -1
+    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 75
+    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1728000
+
+    # cpufreq
+    write /devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2265600
+    write /devices/system/cpu/cpu1/cpufreq/scaling_max_freq 2265600
+    write /devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2265600
+    write /devices/system/cpu/cpu3/cpufreq/scaling_max_freq 2265600
     write /devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
     write /devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
     write /devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
     write /devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
+
+    # End of governor configuration
     write /sys/module/msm_thermal/core_control/enabled 1
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 75
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1728000
+
     chown root system /sys/devices/system/cpu/mfreq
     chmod 220 /sys/devices/system/cpu/mfreq
     chown root system /sys/devices/system/cpu/cpu1/online
@@ -710,8 +706,11 @@ on property:sys.boot_completed=1
     write /sys/module/cpu_boost/parameters/plug_boost_freq 1728000
     write /sys/module/cpu_boost/parameters/plug_boost_ms 5
 
-    # Post boot services
-    start mpdecision
+    # Configure the GPU
+    write 320000000 /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/min_freq
+
+    # Start hotplugging / unplugging
+    write /sys/devices/system/cpu/simple_plug/active 1
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
@@ -864,3 +863,52 @@ service fastmmisrv /system/bin/sh /init.qcom.factory.sh
 
 on ffbm
     start fastmmisrv
+
+# CM Performance Profiles
+
+# Powersave
+on property:sys.perf.profile=0
+    stop mpdecision
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor "powersave"
+    write /sys/module/msm_thermal/core_control/enabled 1
+    start mpdecision
+
+# Balanced
+on property:sys.perf.profile=1
+    stop mpdecision
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor "msm-adreno-tz"
+    write /sys/module/msm_thermal/core_control/enabled 1
+    start mpdecision
+
+# High performance
+on property:sys.perf.profile=2
+    stop mpdecision
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor "performance"
+    write /sys/module/msm_thermal/core_control/enabled 1

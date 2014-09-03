@@ -1067,4 +1067,16 @@
                 <ctl name="DEC6 Volume" value="84" />
         </path>
 
+        <!-- Compatibility with other tabpro devices -->
+        <path name="rec-sub-mic">
+	        <path name="rec-main-mic"/>
+        </path>
+
+        <path name="voice-call-sub-mic">
+	        <path name="voice-call-main-mic"/>
+        </path>
+
+        <path name="vr-sub-mic">
+	        <path name="vr-main-mic"/>
+        </path>
 </mixer>
