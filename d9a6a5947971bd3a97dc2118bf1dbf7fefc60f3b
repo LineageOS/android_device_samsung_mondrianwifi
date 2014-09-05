@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_61e24105",
+        "filename": "device.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 167
+      },
+      "writtenOn": "2014-09-05T08:52:14Z",
+      "side": 1,
+      "message": "should be mixer_paths.xml",
+      "revId": "d9a6a5947971bd3a97dc2118bf1dbf7fefc60f3b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
