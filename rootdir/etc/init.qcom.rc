@@ -668,12 +668,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
-    write /sys/devices/system/cpu/cpufreq/interactive/sync_freq 1036800
     write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
-    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
-    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack -1
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 75
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1728000
 
     # cpufreq
     write /devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2265600
@@ -709,8 +704,8 @@ on property:sys.boot_completed=1
     # Configure the GPU
     write 320000000 /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/min_freq
 
-    # Start hotplugging / unplugging
-    write /sys/devices/system/cpu/simple_plug/active 1
+    # Post boot services
+    start mpdecision
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start

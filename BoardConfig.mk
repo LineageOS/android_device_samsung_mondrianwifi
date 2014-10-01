@@ -35,7 +35,6 @@ TARGET_KERNEL_SOURCE := kernel/samsung/mondrianwifi
 # Audio
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 BOARD_HAVE_SAMSUNG_AUDIO := true
-BOARD_USES_CUSTOM_AUDIO_PLATFORM_PATH := device/samsung/mondrianwifi/audio/platform
 BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_FLUENCE_FOR_VOIP := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
@@ -55,6 +54,9 @@ TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := device/samsung/mondrianwifi/init/init_mondrianwifi.c
 TARGET_UNIFIED_DEVICE := true
 
+# Graphics
+TARGET_HAVE_NEW_GRALLOC := true
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
@@ -67,7 +69,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # PowerHAL
-TARGET_POWERHAL_VARIANT := mondrianwifi
+TARGET_POWERHAL_VARIANT := cm
 
 # Recovery
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD

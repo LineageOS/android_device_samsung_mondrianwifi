@@ -1068,6 +1068,10 @@
         </path>
 
         <!-- Compatibility with other tabpro devices -->
+        <path name="voice-call-handset">
+	        <path name="speaker" />
+        </path>
+
         <path name="rec-sub-mic">
 	        <path name="rec-main-mic"/>
         </path>
