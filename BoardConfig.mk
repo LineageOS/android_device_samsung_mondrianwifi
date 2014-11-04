@@ -49,6 +49,9 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 # GPS
 TARGET_NO_RPC := true
 
+# Hardware
+BOARD_HARDWARE_CLASS += device/samsung/mondrianwifi/cmhw
+
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := device/samsung/mondrianwifi/init/init_mondrianwifi.c
@@ -69,7 +72,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # PowerHAL
-TARGET_POWERHAL_VARIANT := cm
+TARGET_POWERHAL_VARIANT := qcom
 
 # Recovery
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
