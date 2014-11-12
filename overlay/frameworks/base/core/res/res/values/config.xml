@@ -166,13 +166,19 @@
     <bool name="skip_restoring_network_selection">true</bool>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
+<!--
     <bool name="config_intrusiveNotificationLed">false</bool>
+-->
 
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+<!--
     <bool name="config_intrusiveBatteryLed">false</bool>
+-->
 
     <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
+<!--
     <bool name="config_multiColorBatteryLed">false</bool>
+-->
 
 <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
@@ -244,19 +250,22 @@
             16 - App switch
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
+<!--
     <integer name="config_deviceHardwareKeys">19</integer>
+-->
 
     <bool name="config_enableWifiDisplay">true</bool>
 
     <!-- Panel auto-brightness configuration value -->
+<!--
     <integer name="config_panelAutoBrightnessValue">1</integer>
-
-    <!-- Boolean to enable stylus gestures -->
-    <bool name="config_stylusGestures">true</bool>
+-->
 
     <!-- Performance profiles -->
+<!--
     <string name="config_perf_profile_prop">sys.perf.profile</string>
     <string name="config_perf_profile_default_entry">1</string>
+-->
 
     <!--  Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">8</integer>
@@ -271,5 +280,7 @@
     <dimen name="config_viewConfigurationTouchSlop">19dip</dimen>
 
     <!-- Device supports LED flashlight -->
+<!--
     <bool name="config_enableTorch">true</bool>
+-->
 </resources>
