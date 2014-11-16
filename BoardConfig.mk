@@ -56,6 +56,7 @@ TARGET_NO_RPC := true
 
 # Hardware
 BOARD_HARDWARE_CLASS += device/samsung/mondrianwifi/cmhw
+TARGET_USES_LOGD := false
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
