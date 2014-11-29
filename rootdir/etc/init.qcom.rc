@@ -770,6 +770,7 @@ service profiler_daemon /system/bin/profiler_daemon
 service container /system/bin/sdcard /data/container /mnt/shell/container 1000 1000
     class late_start
     oneshot
+    start container
 
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
