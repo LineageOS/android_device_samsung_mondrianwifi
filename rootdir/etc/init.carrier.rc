@@ -17,6 +17,7 @@ on boot
 # permission for Input Device(Wacom).
     chmod 0660 /sys/class/input/input4/enabled
     chown system system /sys/class/input/input4/enabled
+    chown system system /sys/class/input/input18/enabled
 
 # permissions for S-Pen
     chmod 0660 /sys/class/input/input3/enabled
@@ -56,6 +57,20 @@ on fs
 
 # Support Preload install apks
     mkdir /preload 0771 system system
+
+#For Absolute Persistence Partition
+
+     mkdir /persdata 0755 system system
+     mkdir /persdata/absolute 0750 system system
+
+     wait /dev/block/platform/msm_sdcc.1/by-name/persdata
+     check_fs /dev/block/platform/msm_sdcc.1/by-name/persdata ext4
+     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persdata /persdata/absolute nosuid nodev barrier=1
+
+     chown system system /persdata
+     chmod 0755 /persdata
+     chown system system /persdata/absolute
+     chmod 0750 /persdata/absolute
 
 # bluetooth dhcp config
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
