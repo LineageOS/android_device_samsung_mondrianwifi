@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9abb7d3a_e3867a12",
+        "filename": "sepolicy/system_server.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-12-09T18:34:33Z",
+      "side": 1,
+      "message": "Seems very OPEN to allow system_server to write to unlabeled file? Seems like it would be prudent to find the file it is writing to and label it properly?",
+      "revId": "9ddd093baae6e8c7276ce9350ce126bed59432dc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
