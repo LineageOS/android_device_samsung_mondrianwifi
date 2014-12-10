@@ -16,6 +16,24 @@
       "revId": "9ddd093baae6e8c7276ce9350ce126bed59432dc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9abb7d3a_e3d5dab9",
+        "filename": "sepolicy/system_server.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2014-12-10T00:59:22Z",
+      "side": 1,
+      "message": "I\u0027m hoping this will go away when I get the ability to label a partition via mount options (I have a vfat partition that I can\u0027t restorecon on and I forget why allowing system_server vfat:file write didn\u0027t work).\n\nBut, yes, I agree that is \"rather\" open right now.",
+      "parentUuid": "9abb7d3a_e3867a12",
+      "revId": "9ddd093baae6e8c7276ce9350ce126bed59432dc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
