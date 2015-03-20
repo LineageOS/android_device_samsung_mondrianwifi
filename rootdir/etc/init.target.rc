@@ -146,6 +146,9 @@ on post-fs-data
     chown system camera /sys/class/flash/flash/flash_power
     chmod 660 /sys/class/flash/flash/flash_power
 
+    # Set the input device permissions
+    exec /system/bin/sh /init.input.sh
+
 on boot
 
 # MUIC
@@ -530,3 +533,8 @@ service ppd /system/bin/mm-pp-daemon
    socket pps stream 0660 system system graphics
    group system graphics
 
+service init-input-sh /system/bin/sh /init.input.sh
+    class core
+    user root
+    group root
+    oneshot

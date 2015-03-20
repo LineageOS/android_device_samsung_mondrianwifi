@@ -93,6 +93,7 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.carrier.rc \
     init.crda.sh \
+    init.input.sh \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.target.rc \
