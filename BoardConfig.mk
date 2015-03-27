@@ -52,6 +52,9 @@ QCOM_BT_USE_SMD_TTY := true
 TARGET_PROVIDES_CAMERA_HAL := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
+# Charger
+BOARD_CHARGER_SHOW_PERCENTAGE := true
+
 # GPS
 TARGET_NO_RPC := true
 TARGET_GPS_HAL_PATH := device/samsung/mondrianwifi/gps
