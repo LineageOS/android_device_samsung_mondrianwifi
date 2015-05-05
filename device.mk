@@ -54,6 +54,12 @@ PRODUCT_PACKAGES += \
     camera.msm8974 \
     libxml2
 
+# Filesystem
+PRODUCT_PACKAGES += \
+    fibmap.f2fs \
+    fsck.f2fs \
+    mkfs.f2fs
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8974
