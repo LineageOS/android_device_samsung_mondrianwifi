@@ -15,7 +15,6 @@
  */
 
 #define CAMERA_PARAMETERS_EXTRA_C \
-const char CameraParameters::KEY_DIS[] = "dis"; \
 const char CameraParameters::DIS_DISABLE[] = "disable"; \
 \
 const char CameraParameters::KEY_ZSL[] = "zsl"; \
@@ -29,7 +28,6 @@ int CameraParameters::getInt64(const char *key) const { return -1; } \
  */
 
 #define CAMERA_PARAMETERS_EXTRA_H \
-    static const char KEY_DIS[]; \
     static const char DIS_DISABLE[]; \
     \
     static const char KEY_ZSL[]; \
