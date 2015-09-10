@@ -71,6 +71,9 @@ TARGET_UNIFIED_DEVICE := true
 TARGET_HAVE_NEW_GRALLOC := true
 BOARD_USES_LEGACY_MMAP := true
 
+# Libc extensions
+BOARD_PROVIDES_ADDITIONAL_BIONIC_STATIC_LIBS := libmondrianwifi_global_symbols
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
