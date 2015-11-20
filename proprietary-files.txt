@@ -230,19 +230,23 @@ vendor/lib/libqc-opt.so
 
 # DRM
 bin/qseecomd
-framework/com.google.widevine.software.drm.jar
-lib/libdrmdecrypt.so
+lib/drm/libfwdlockengine.so
+lib/libdrmdiag.so
+lib/libdrmfs.so
+lib/libdrmtime.so
+lib/libQSEEComAPI.so
+lib/librpmb.so
+lib/libssd.so
+vendor/lib/libdrmdecrypt.so
+vendor/lib/libsecureui.so
+vendor/lib/lib-sec-disp.so
 vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/libdrmdiag.so
-vendor/lib/libdrmfs.so
-vendor/lib/libdrmtime.so
-vendor/lib/libQSEEComAPI.so
-vendor/lib/librpmb.so
-vendor/lib/libssd.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvm.so
+vendor/lib/libWVphoneAPI.so
+vendor/lib/libWVStreamControlAPI_L1.so
 
 # IPC router security
 etc/sec_config
