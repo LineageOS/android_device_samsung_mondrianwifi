@@ -35,7 +35,7 @@ on early-init
     setprop sys.io.scheduler noop
 
 on init
-    export LD_SHIM_LIBS "/system/vendor/lib/libqc-opt.so|libshim_qcopt.so"
+    export LD_SHIM_LIBS "/system/vendor/lib/libqc-opt.so|libshim_qcopt.so:/system/bin/rmt_storage|libshim_rmt_storage.so"
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
