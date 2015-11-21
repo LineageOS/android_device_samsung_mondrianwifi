@@ -103,6 +103,10 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     ueventd.qcom.rc
 
+# Ssl
+PRODUCT_PACKAGES += \
+    libboringssl-compat
+
 # Stlport
 PRODUCT_PACKAGES += \
     libstlport
