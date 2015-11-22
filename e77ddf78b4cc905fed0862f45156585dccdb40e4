@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f4e5783_19f77bf8",
+        "filename": "libshims/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-11-22T02:58:19Z",
+      "side": 1,
+      "message": "You probably don\u0027t need this line.",
+      "revId": "e77ddf78b4cc905fed0862f45156585dccdb40e4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
