@@ -71,17 +71,6 @@ on fs
      chown system system /persdata/absolute
      chmod 0750 /persdata/absolute
 
-# bluetooth dhcp config
-service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
-    class main
- disabled
- oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    class late_start
- disabled
- oneshot
-
 # service for TZPR provisioning version check app
 service scranton_RD /system/bin/scranton_RD
     class main
