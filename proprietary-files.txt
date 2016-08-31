@@ -97,7 +97,6 @@ bin/ks
 #vendor/bin/sec-ril
 bin/qcks
 bin/qmuxd
-bin/rild
 bin/rmt_storage
 lib/libatparser.so
 lib/libcordon.so
@@ -230,7 +229,6 @@ vendor/lib/libqc-opt.so
 
 # DRM
 bin/qseecomd
-lib/drm/libfwdlockengine.so
 lib/libdrmdiag.so
 lib/libdrmfs.so
 lib/libdrmtime.so
@@ -242,7 +240,6 @@ vendor/lib/libsecureui.so
 vendor/lib/lib-sec-disp.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
-vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
 vendor/lib/libWVphoneAPI.so
