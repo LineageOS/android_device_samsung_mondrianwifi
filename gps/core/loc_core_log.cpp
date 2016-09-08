@@ -131,7 +131,7 @@ static loc_name_val_s_type loc_eng_aiding_data_bits[] =
     NAME_VAL( BDS_DELETE_ALMANAC_CORR ),
     NAME_VAL( BDS_DELETE_EPHEMERIS ),
     NAME_VAL( BDS_DELETE_ALMANAC ),
-    NAME_VAL( GPS_DELETE_ALL)
+    NAME_VAL( (long) GPS_DELETE_ALL)
 };
 static int loc_eng_aiding_data_bit_num = sizeof(loc_eng_aiding_data_bits) / sizeof(loc_name_val_s_type);
 
