@@ -19,9 +19,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/mondrianwifi/include
 
 TARGET_OTA_ASSERT_DEVICE := mondrianwifi,mondrianwifiue,mondrianwifixx
 
-TARGET_LIBINIT_MSM8974_DEFINES_FILE := device/samsung/mondrianwifi/init/init_mondrianwifi.cpp
-
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 
