@@ -8,6 +8,11 @@ ro.sf.lcd_density=320
 # Bluetooth
 qcom.bluetooth.soc=smd
 
+# Camera
+camera2.portability.force_api=1
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
+
 # gps
 persist.gps.qc_nlp_in_use=0
 ro.gps.agps_provider=1
